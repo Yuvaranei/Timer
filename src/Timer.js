@@ -22,7 +22,7 @@ export default class TicTacToe extends Component{
         if(status === 'start'){
             this.disableStartButton = true;
             clearInterval(this.timeInterval);
-            this.timeInterval = setInterval(this.updateCounter,1000);
+            this.timeInterval = setInterval(this.updateCounter,500);
         }
         else if(status === 'clear'){
             this.disableStartButton = false;
