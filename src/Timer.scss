@@ -1,0 +1,15 @@
+.timer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button{
+        width: 150px;
+        height: 50px;
+        margin: 20px;
+    }
+}
+
+.timer-counter{
+    font-size: 40px;
+}
