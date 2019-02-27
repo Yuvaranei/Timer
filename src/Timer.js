@@ -9,6 +9,7 @@ export default class TicTacToe extends Component{
             counter : 0,
             timerStatus : 'clear'
         }
+        this.disableStartButton = false;
     }
 
     updateTimer(status){
@@ -19,10 +20,12 @@ export default class TicTacToe extends Component{
             timerStatus : status
         })
         if(status === 'start'){
+            this.disableStartButton = true;
             clearInterval(this.timeInterval);
             this.timeInterval = setInterval(this.updateCounter,1000);
         }
         else if(status === 'clear'){
+            this.disableStartButton = false;
             this.setState({
                 counter : 0
             })
@@ -39,11 +42,10 @@ export default class TicTacToe extends Component{
     }
 
     render(){
-        const disableStartButton = this.state.counter ? true : false;
         return(
             <div className="timer-container">
                <div className = "timer-controllers">
-                    <button onClick={this.updateTimer.bind(this,'start')} disable={disableStartButton}>Start</button>
+                    <button onClick={this.updateTimer.bind(this,'start')} disabled={this.disableStartButton}>Start</button>
                     <button onClick={this.updateTimer.bind(this,'pause-resume')}>Pause / Resume</button>
                     <button onClick={this.updateTimer.bind(this,'clear')}>Clear</button>
                </div>
